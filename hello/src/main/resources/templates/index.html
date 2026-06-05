@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="common/header :: header"></div>
+    <h1 th:text="#{my.name}">Text mặc định</h1>
+    <h1 th:text="${msg}">Text mặc định</h1>
+    <a th:href="@{/employee}" th:text="#{employee.list}"></a>
+    <img th:src="@{/img/hdhd.jpg}" />
+    <div th:replace="common/footer :: footer"></div>
+</body>
+</html>

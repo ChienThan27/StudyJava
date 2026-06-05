@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div th:replace="common/header :: header"></div>
+    <h1 th:text="#{employee.list}"></h1>
+    <p>--------------------------</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th></th>
+        </tr>
+        <tr th:each="emp : ${employees}">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.age}"></td>
+            <td th:if="${emp.age >= 60}" >Cao tuoi</td>
+            <td th:if="${emp.age >= 30 and emp.age < 60}" >Trung Niên</td>
+            <td th:if="${emp.age < 30}" >Thieu nien</td>
+        </tr>
+    </table>
+    <p>--------------------------</p>
+    <form th:action="@{/employee}" th:object="${employee}" method="post">
+        <label for="name">Tên</label>
+        <input th:field="*{name}" type="text" />
+        <br/><br/>
+        <label for="age">Tuổi</label>
+        <input th:field="*{age}" type="text" />
+        <br/><br/>
+        <input type="submit" value="Tao moi"/>
+    </form>
+    <div th:replace="common/footer :: footer"></div>
+</body>
+</html>
